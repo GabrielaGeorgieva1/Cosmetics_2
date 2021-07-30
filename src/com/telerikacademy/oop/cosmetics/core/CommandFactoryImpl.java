@@ -28,9 +28,9 @@ public class CommandFactoryImpl implements CommandFactory {
             case REMOVEFROMCATEGORY:
                 return new RemoveFromCategoryCommand(repository);
             case CREATESHAMPOO:
-                throw new UnsupportedOperationException("Not implemented yet.");
+                throw new UnsupportedOperationException(commandName);
             case CREATETOOTHPASTE:
-                throw new UnsupportedOperationException("Not implemented yet.");
+                throw new UnsupportedOperationException(commandName);
             default:
                 throw new IllegalArgumentException(String.format(INVALID_COMMAND, commandName));
         }

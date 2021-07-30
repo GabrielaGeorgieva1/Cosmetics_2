@@ -4,6 +4,8 @@ import com.telerikacademy.oop.cosmetics.models.enums.GenderType;
 import com.telerikacademy.oop.cosmetics.models.enums.ScentType;
 import com.telerikacademy.oop.cosmetics.models.enums.UsageType;
 
+import java.util.Locale;
+
 public class ParsingHelpers {
 
     public static final String PRODUCT_CREATED = "%s with name %s was created!";
@@ -32,7 +34,7 @@ public class ParsingHelpers {
 
     public static GenderType tryParseGender(String valueToParse) {
         try {
-            return GenderType.valueOf(valueToParse);
+            return GenderType.valueOf(valueToParse.toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(String.format(NO_SUCH_GENDERTYPE_ENUM, valueToParse));
         }
@@ -40,7 +42,7 @@ public class ParsingHelpers {
 
     public static ScentType tryParseScent(String valueToParse) {
         try {
-            return ScentType.valueOf(valueToParse);
+            return ScentType.valueOf(valueToParse.toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(String.format(NO_SUCH_SCENTTYPE_ENUM, valueToParse));
         }
@@ -48,7 +50,7 @@ public class ParsingHelpers {
 
     public static UsageType tryParseUsageType(String valueToParse) {
         try {
-            return UsageType.valueOf(valueToParse);
+            return UsageType.valueOf(valueToParse.toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(String.format(NO_SUCH_USAGETYPE_ENUM, valueToParse));
         }

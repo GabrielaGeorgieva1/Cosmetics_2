@@ -1,8 +1,30 @@
 package com.telerikacademy.oop.cosmetics.tests.commands;
 
+import com.telerikacademy.oop.cosmetics.commands.CreateCreamCommand;
+import com.telerikacademy.oop.cosmetics.core.CosmeticsRepositoryImpl;
+import com.telerikacademy.oop.cosmetics.core.contracts.Command;
+import com.telerikacademy.oop.cosmetics.core.contracts.CosmeticsRepository;
+import com.telerikacademy.oop.cosmetics.models.contracts.Product;
+import com.telerikacademy.oop.cosmetics.models.enums.GenderType;
+import com.telerikacademy.oop.cosmetics.models.enums.ScentType;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.List;
+
+import static com.telerikacademy.oop.cosmetics.commands.CreateCreamCommand.EXPECTED_NUMBER_OF_ARGUMENTS;
+import static com.telerikacademy.oop.cosmetics.tests.utils.TestData.Category.VALID_NAME;
+import static com.telerikacademy.oop.cosmetics.tests.utils.TestData.Cream.VALID_BRAND_NAME;
+import static com.telerikacademy.oop.cosmetics.tests.utils.TestData.POSITIVE_DOUBLE;
+import static com.telerikacademy.oop.cosmetics.tests.utils.TestUtilities.initializeListWithSize;
+import static com.telerikacademy.oop.cosmetics.tests.utils.TestUtilities.initializeTestProduct;
+
 public class CreateCreamCommand_Tests {
 
-  /*  Command command;
+   Command command;
     CosmeticsRepository cosmeticsRepository;
 
     @BeforeEach
@@ -101,5 +123,4 @@ public class CreateCreamCommand_Tests {
                 () -> Assertions.assertEquals(1, cosmeticsRepository.getProducts().size())
         );
     }
-*/
 }

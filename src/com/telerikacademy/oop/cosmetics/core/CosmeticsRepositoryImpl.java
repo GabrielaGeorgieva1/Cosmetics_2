@@ -1,14 +1,10 @@
 package com.telerikacademy.oop.cosmetics.core;
 
 import com.telerikacademy.oop.cosmetics.core.contracts.CosmeticsRepository;
-import com.telerikacademy.oop.cosmetics.models.CategoryImpl;
-import com.telerikacademy.oop.cosmetics.models.ShampooImpl;
-import com.telerikacademy.oop.cosmetics.models.ShoppingCartImpl;
-import com.telerikacademy.oop.cosmetics.models.ToothpasteImpl;
-import com.telerikacademy.oop.cosmetics.models.contracts.Category;
-import com.telerikacademy.oop.cosmetics.models.contracts.Product;
-import com.telerikacademy.oop.cosmetics.models.contracts.ShoppingCart;
+import com.telerikacademy.oop.cosmetics.models.*;
+import com.telerikacademy.oop.cosmetics.models.contracts.*;
 import com.telerikacademy.oop.cosmetics.models.enums.GenderType;
+import com.telerikacademy.oop.cosmetics.models.enums.ScentType;
 import com.telerikacademy.oop.cosmetics.models.enums.UsageType;
 
 import java.util.ArrayList;
@@ -46,7 +42,13 @@ public class CosmeticsRepositoryImpl implements CosmeticsRepository {
 
     @Override
     public Product findProductByName(String productName) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        for (Product products : getProducts()) {
+            if (products.getName().equalsIgnoreCase(productName)) {
+                return products;
+            }
+        }
+
+        throw new IllegalArgumentException(String.format(PRODUCT_DOES_NOT_EXIST, productName));
     }
 
     @Override
@@ -70,12 +72,23 @@ public class CosmeticsRepositoryImpl implements CosmeticsRepository {
     @Override
     public ShampooImpl createShampoo(String name, String brandName, double price, GenderType genderType,
                                      int millilitres, UsageType usageType) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        ShampooImpl shampoo  = new ShampooImpl(name,brandName,price,genderType, millilitres,usageType);
+        this.products.add(shampoo);
+        return shampoo;
     }
 
     @Override
     public ToothpasteImpl createToothpaste(String name, String brandName, double price, GenderType genderType, List<String> ingredients) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+        ToothpasteImpl toothpaste = new ToothpasteImpl(name,brandName,price,genderType,ingredients);
+        this.products.add(toothpaste);
+        return toothpaste;
+    }
+
+    public CreamImpl createCream(String name, String brandName, double price, GenderType genderType,
+                                 ScentType scentType) {
+        CreamImpl cream  = new CreamImpl(name,brandName,price,genderType, scentType);
+        this.products.add(cream);
+        return cream;
     }
 
     @Override
@@ -105,7 +118,6 @@ public class CosmeticsRepositoryImpl implements CosmeticsRepository {
 
         return exists;
     }
-
     @Override
     public void addProductToShoppingCart(Product product) {
         shoppingCart.addProduct(product);

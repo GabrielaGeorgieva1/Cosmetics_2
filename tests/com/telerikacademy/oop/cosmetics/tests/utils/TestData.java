@@ -1,6 +1,7 @@
 package com.telerikacademy.oop.cosmetics.tests.utils;
 
 import com.telerikacademy.oop.cosmetics.models.CategoryImpl;
+import com.telerikacademy.oop.cosmetics.models.CreamImpl;
 import com.telerikacademy.oop.cosmetics.models.ShampooImpl;
 import com.telerikacademy.oop.cosmetics.models.ToothpasteImpl;
 
@@ -25,12 +26,11 @@ public class TestData {
         public static final String VALID_BRAND_NAME = initializeStringWithSize(ShampooImpl.BRAND_NAME_MIN_LENGTH + 1);
 
     }
-//    public static class Cream {
-//
-//        public static final String VALID_NAME = initializeStringWithSize(CreamImpl.NAME_MIN_LENGTH + 1);
-//        public static final String VALID_BRAND_NAME = initializeStringWithSize(CreamImpl.BRAND_NAME_MIN_LENGTH + 1);
-//
-//    }
+    public static class Cream {
+
+      public static final String VALID_NAME = initializeStringWithSize(CreamImpl.NAME_MIN_LENGTH + 1);
+      public static final String VALID_BRAND_NAME = initializeStringWithSize(CreamImpl.BRAND_NAME_MIN_LENGTH + 1);
+   }
 
     public static class Category {
 

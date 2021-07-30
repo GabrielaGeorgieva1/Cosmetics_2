@@ -1,22 +1,28 @@
 package com.telerikacademy.oop.cosmetics.models;
 
+
+import com.telerikacademy.oop.cosmetics.models.contracts.Toothpaste;
 import com.telerikacademy.oop.cosmetics.models.enums.GenderType;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ToothpasteImpl {
+public class ToothpasteImpl extends Cosmetic implements Toothpaste{
 
-    public static final int NAME_MIN_LENGTH = 3;
-    public static final int NAME_MAX_LENGTH = 10;
-    public static final int BRAND_NAME_MIN_LENGTH = 2;
-    public static final int BRAND_NAME_MAX_LENGTH = 10;
+     private List<String> ingredients = new ArrayList<String>();
 
-    public ToothpasteImpl(String name, String brandName, double price, GenderType genderType, List<String> ingredients) {
-        throw new UnsupportedOperationException("Not implemented yet.");
+    public ToothpasteImpl(String name, String brand, double price, GenderType genderType,List<String> ingredients) {
+        super(name, brand, price, genderType);
+        this.ingredients = ingredients;
+
+    }
+
+    @Override
+    public List<String> getIngredients() {
+        return ingredients;
     }
 
 
-    /* This method should be uncommented when you are done with the class.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -27,5 +33,9 @@ public class ToothpasteImpl {
                 getPrice() == toothpaste.getPrice() &&
                 this.getGenderType().equals(toothpaste.getGenderType()) &&
                 getIngredients().equals(toothpaste.getIngredients());
-    }*/
+    }
+    @Override
+    public String print() {
+        return String.format("%s, #Ingredients: %s",super.print(),ingredients);
+    }
 }
